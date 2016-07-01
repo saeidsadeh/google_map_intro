@@ -22,9 +22,19 @@
       function initMap() {
         var theirLatLng = {lat: -25.363, lng: 131.044};
         var myLatLng = {lat: 49.246292, lng: -123.116226};
+        var sushi = {lat: 49.263305, lng: -123.112639};
+
+        var contentString = 'best place to eat sushi'
+            
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+
 
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
+          zoom: 12,
           center: myLatLng
         });
         var myMarker = new google.maps.Marker({
@@ -38,7 +48,16 @@
         var theirMarker = new google.maps.Marker({
           position: theirLatLng,
           map: map,
-          title: 'Hello World!'
+          title: 'Vancouver'
+        });
+        var sushiMarker = new google.maps.Marker({
+          position: sushi,
+          map: map,
+          title: 'california sushi!'
+        });
+
+        sushiMarker.addListener('click', function() {
+          infowindow.open(map, sushiMarker);
         });
       }
     </script>
